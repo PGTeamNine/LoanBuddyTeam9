@@ -11,13 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-
 import com.lti.dao.CustomerDao;
 import com.lti.entity.Customer;
 import com.lti.entity.EmployementTypeEnum;
 
-public class CTest {
-	
+public class CustomerDaoTest {
+
 	CustomerDao dao;
 
 	@Before
@@ -37,7 +36,7 @@ public class CTest {
 		}
 		assertNotNull(listCustomer);
 	}
-	
+
 	@Test
 	public void addOrUpdateCustomerTest() {
 		Customer customer = new Customer();
@@ -51,24 +50,18 @@ public class CTest {
 		customer.setOrganizationName("LTI");
 		customer.setCustomer_income(132214);
 		customer.setEmploymentType(EmployementTypeEnum.PERMANENT);
-		
-		
 
 		Customer savedUser = dao.addOrUpdateCustomer(customer);
 
 		assertNotNull(savedUser);
 	}
-	
+
 	@Test
 	public void getCustomerByIdTest() {
-		 Customer customer=dao.getCustomerById(1);
-		 System.out.println(customer.getName());
-		 assertNotNull(customer);
-	
+		Customer customer = dao.getCustomerById(1);
+		System.out.println(customer.getName());
+		assertNotNull(customer);
+
 	}
-	
-	
-	
-	
 
 }

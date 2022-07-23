@@ -5,11 +5,11 @@ public class LoanApplication {
 	double maxLoanGrant;
 	int tenure;
 	double loanAmmount;
-	
+
 	Character customer;
-	
+
 	Property property;
-	
+
 	boolean isApproved;
 
 	public double getMaxLoanGrant() {
@@ -55,6 +55,5 @@ public class LoanApplication {
 	public Property getProperty() {
 		return property;
 	}
-	
-	
+
 }
