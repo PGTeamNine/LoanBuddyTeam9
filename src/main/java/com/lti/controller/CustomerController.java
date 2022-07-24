@@ -4,25 +4,36 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.entity.Customer;
 import com.lti.service.CustomerService;
 
-@Controller
+@RestController
+@RequestMapping("/customers")
 public class CustomerController {
 	
 	@Autowired
 	CustomerService customerService;
-	
-	public String signup(Customer customer) {
+	// http://localhost:8181/LoanBuddy/myapp/customers/signup
+	//@RequestMapping(value = "/signup",method = RequestMethod.POST)
+	@PostMapping(value = "/signup")
+	public String signup(@RequestBody Customer customer) {
 		String message=customerService.registerNewCustomer(customer);
 		return message;
 	}
-	
-	public Customer findCustomer(int customerId) {
+	@GetMapping("/customer/{customerId}")
+	public Customer findCustomer(@PathVariable int customerId) {
 		return customerService.findCustomer(customerId);
 	}
-	
+	@GetMapping("/viewAllCustomers")
 	public List<Customer> viewAllCustomers(){
 		return customerService.viewAllCustomers();
 	}

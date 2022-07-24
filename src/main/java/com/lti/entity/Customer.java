@@ -1,6 +1,7 @@
 package com.lti.entity;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.codehaus.jackson.map.ext.JodaDeserializers.LocalDateDeserializer;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "customer_tbl")
@@ -20,6 +27,8 @@ public class Customer {
 	String name;
 	String email;
 	String password;
+	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	
 	LocalDate dob;
 	String adharNumber;
 	String panNumber;
@@ -57,8 +66,11 @@ public class Customer {
 		return dob;
 	}
 
-	public void setDob(LocalDate dob) {
-		this.dob = dob;
+	public void setDob(String stringDob) {
+		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("d/MM/yyyy");
+		String date=stringDob;
+		LocalDate localDate=LocalDate.parse(date, formatter);
+		this.dob = localDate;
 	}
 
 	public String getAdharNumber() {
