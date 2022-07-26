@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -36,6 +37,21 @@ public class Customer {
 	String organizationName;
 	double customer_income;
 	EmployementTypeEnum employmentType;
+	
+	@OneToOne(mappedBy = "customer")
+	Property property;
+
+	public Property getProperty() {
+		return property;
+	}
+
+	public void setProperty(Property property) {
+		this.property = property;
+	}
+
+	public void setDob(LocalDate dob) {
+		this.dob = dob;
+	}
 
 	// Getters and Setters
 	public String getName() {
@@ -67,7 +83,7 @@ public class Customer {
 	}
 
 	public void setDob(String stringDob) {
-		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("d/MM/yyyy");
+		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		String date=stringDob;
 		LocalDate localDate=LocalDate.parse(date, formatter);
 		this.dob = localDate;

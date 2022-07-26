@@ -37,5 +37,9 @@ public class CustomerController {
 	public List<Customer> viewAllCustomers(){
 		return customerService.viewAllCustomers();
 	}
+	@GetMapping("/sample")
+	public void sample(){
+		System.out.println("Sample Here.");
+	}
 	
 }

@@ -39,6 +39,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	public Customer getCustomerById(int customerId) {
 		// TODO Auto-generated method stub
 		return em.find(Customer.class, customerId);
+		
 	}
 
 //	@Transactional

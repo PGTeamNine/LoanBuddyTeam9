@@ -30,7 +30,7 @@ public class CustomerControllerTest {
 		Customer customer = new Customer();
 		customer.setName("Parth");
 		customer.setEmail("Parth@gmail.com");
-		customer.setDob(LocalDate.of(2022, 02, 01));
+		customer.setDob("04/12/2000");
 		customer.setAdharNumber("123445");
 		customer.setPanNumber("BJK123");
 		customer.setPhoneNumber("87864353");

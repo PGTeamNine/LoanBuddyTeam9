@@ -43,7 +43,7 @@ public class CustomerDaoTest {
 		customer.setName("Swati");
 		customer.setEmail("swati@lti.com");
 		customer.setPassword("Pass@123");
-		customer.setDob(LocalDate.of(2022, 02, 01));
+		customer.setDob("7/12/1999");
 		customer.setAdharNumber("123445");
 		customer.setPanNumber("BJK123");
 		customer.setPhoneNumber("87864353");
@@ -58,7 +58,7 @@ public class CustomerDaoTest {
 
 	@Test
 	public void getCustomerByIdTest() {
-		Customer customer = dao.getCustomerById(1);
+		Customer customer = dao.getCustomerById(4);
 		System.out.println(customer.getName());
 		assertNotNull(customer);
 
