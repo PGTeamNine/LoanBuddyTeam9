@@ -1,5 +1,7 @@
 package com.lti.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -25,6 +27,12 @@ public class PropertyDaoImpl implements PropertyDao {
 		Customer c = searchCustomer(customerId);
 		//System.out.println(c.getName() + " " + c.getEmail());
 		Property p = c.getProperty();
+		p.setCustomer(null);
+//		Property p1=new Property();
+//		p1.setPropertyAmount(p.getPropertyAmount());
+//		p1.setPropertyId(p.getPropertyId());
+//		p1.setPropertyLocation(p.getPropertyLocation());
+//		p1.setCustomer(null);
 		//System.out.println(p.getPropertyLocation());
 		return p;
 		// return dao1.getCustomerById(customerId).getProperty();
@@ -47,6 +55,12 @@ public class PropertyDaoImpl implements PropertyDao {
 	public Customer searchCustomer(int customerId) {
 		// TODO Auto-generated method stub
 		return em.find(Customer.class, customerId);
+	}
+
+	public String setApproval(boolean setParam) {
+		// TODO Auto-generated method stub
+		
+		return null;
 	}
 
 }

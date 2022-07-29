@@ -40,6 +40,18 @@ public class Customer {
 	
 	@OneToOne(mappedBy = "customer")
 	Property property;
+	
+	@OneToOne(mappedBy = "customer")
+	LoanApplication loanApp;
+	
+
+	public LoanApplication getLoanApp() {
+		return loanApp;
+	}
+
+	public void setLoanApp(LoanApplication loanApp) {
+		this.loanApp = loanApp;
+	}
 
 	public Property getProperty() {
 		return property;

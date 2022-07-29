@@ -48,11 +48,11 @@ public class PropertyDaoTest {
 	public void addPropertyForACustomer() {
 
 		Property property = new Property();
-		property.setPropertyLocation("Pune");
+		property.setPropertyLocation("USA");
 		property.setPropertyAmount(500);
 		property.setPropertyType(PropertyType.RESIDENTIAL);
 		System.out.println("Hii");
-		Customer customer = dao1.getCustomerById(4);
+		Customer customer = dao1.getCustomerById(6);
 		// List<Customer> c=dao1.viewAllCustomers();
 		// System.out.println(c);
 		// assertNotNull(customer);

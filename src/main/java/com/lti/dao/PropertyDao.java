@@ -1,5 +1,7 @@
 package com.lti.dao;
 
+import java.util.List;
+
 import com.lti.entity.Customer;
 import com.lti.entity.Property;
 

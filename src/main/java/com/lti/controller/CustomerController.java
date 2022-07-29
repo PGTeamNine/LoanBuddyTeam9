@@ -13,8 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.dao.CustomerDao;
+import com.lti.entity.Contact;
 import com.lti.entity.Customer;
+import com.lti.entity.Property;
+import com.lti.service.ContactService;
 import com.lti.service.CustomerService;
+import com.lti.service.PropertyService;
 
 @RestController
 @RequestMapping("/customers")
@@ -22,7 +27,12 @@ public class CustomerController {
 	
 	@Autowired
 	CustomerService customerService;
-	// http://localhost:8181/LoanBuddy/myapp/customers/signup
+	@Autowired
+	PropertyService propertyService;
+	CustomerDao dao1;
+	@Autowired
+	ContactService contactService;
+	// http://localhost:8181/LoanBuddy/myapp/customers/customer/3
 	//@RequestMapping(value = "/signup",method = RequestMethod.POST)
 	@PostMapping(value = "/signup")
 	public String signup(@RequestBody Customer customer) {
@@ -37,9 +47,9 @@ public class CustomerController {
 	public List<Customer> viewAllCustomers(){
 		return customerService.viewAllCustomers();
 	}
-	@GetMapping("/sample")
-	public void sample(){
-		System.out.println("Sample Here.");
-	}
+
+
+	
+
 	
 }

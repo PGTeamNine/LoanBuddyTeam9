@@ -1,16 +1,41 @@
 package com.lti.entity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+@Entity
+@Table(name = "application_tbl")
 public class LoanApplication {
+	@Id
+	@SequenceGenerator(name = "appl1_seq", initialValue = 504030201, allocationSize = 1)
+	@GeneratedValue(generator = "appl1_seq", strategy = GenerationType.SEQUENCE)
 	int loanAppId;
 	double maxLoanGrant;
 	int tenure;
 	double loanAmmount;
+	AppStatusEnum appStatus;
+	
+	public AppStatusEnum getAppStatus() {
+		return appStatus;
+	}
 
-	Character customer;
+	public void setAppStatus(AppStatusEnum appStatus) {
+		this.appStatus = appStatus;
+	}
 
-	Property property;
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customerId")
+	Customer customer;
 
-	boolean isApproved;
+	
+
+	
 
 	public double getMaxLoanGrant() {
 		return maxLoanGrant;
@@ -36,24 +61,21 @@ public class LoanApplication {
 		this.loanAmmount = loanAmmount;
 	}
 
-	public boolean isApproved() {
-		return isApproved;
-	}
-
-	public void setApproved(boolean isApproved) {
-		this.isApproved = isApproved;
-	}
+	
+	
 
 	public int getLoanAppId() {
 		return loanAppId;
 	}
 
-	public Character getCustomer() {
+	public Customer getCustomer() {
 		return customer;
 	}
 
-	public Property getProperty() {
-		return property;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
+
+	
 
 }

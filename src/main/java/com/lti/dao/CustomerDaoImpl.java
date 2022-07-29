@@ -38,6 +38,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	public Customer getCustomerById(int customerId) {
 		// TODO Auto-generated method stub
+		//return (Customer)em.createQuery("select c from Customer c where customerId=:cid").setParameter("cid", customerId).getResultList();
 		return em.find(Customer.class, customerId);
 		
 	}
